@@ -35,26 +35,13 @@
     </style>
 
     <body> <?php
-        $nome = $_POST["nome"];
-        $telefone = $_POST["telefone"];
-        $setor = $_POST["setor"];
-        $email = $_POST["email"];
+        $id = $_GET["id"];
+
+        echo "<h1>$id</h1>";
 
 
 
 
-        $conecta = mysqli_connect('localhost', 'root', '21311968') or print("ERRO");
-        mysqli_select_db($conecta, 'ilgner') or print("ERRO");
-
-
-        $sql = "INSERT INTO cadastro (nome , telefone , setor , email) VALUES ('$nome' , '$telefone' , '$setor' , '$email')";
-        if (mysqli_query($conecta, $sql)) {
-            echo "<h1>SALVO COM SUCESSO ";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conecta);
-        }
-        mysqli_close($conecta);
-        echo "<a class='btn' href=" . "index.php" . ">" . "Voltar</a>";
 
         ?> </body>
 
