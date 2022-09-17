@@ -37,7 +37,19 @@
     <body> <?php
         $id = $_GET["id"];
 
-        echo "<h1>$id</h1>";
+
+        $conecta = mysqli_connect('localhost', 'root', '123456') or print("ERRO");
+        mysqli_select_db($conecta, 'ilgner') or print("ERRO");
+
+
+        $sql = "DELETE FROM `ilgner`.`cadastro` WHERE (`id` = $id);";
+        if (mysqli_query($conecta, $sql)) {
+            echo "<h1>DELETADO COM SUCESSO ";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conecta);
+        }
+        mysqli_close($conecta);
+        echo "<a class='btn' href=" . "banco.php" . ">" . "Voltar</a>";
 
 
 

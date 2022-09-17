@@ -24,7 +24,7 @@
         }
 
         table {
-            width: 90vw;
+            width: 70vw;
             border-collapse: collapse;
         }
 
@@ -34,6 +34,11 @@
             padding: 8px;
             width: auto;
             border-radius: 5px;
+        }
+
+        th,
+        td:hover{
+            background: #666;
         }
 
         .btn {
@@ -51,6 +56,11 @@
             border: none;
             cursor: pointer;
             color: black;
+        }
+
+        .alter{
+             color:#333;
+
         }
 
         .center {
@@ -76,7 +86,7 @@
     <body>
         <h1>Tabela de Cadastro</h1>
         <div> <?php
-            $conecta = mysqli_connect('localhost', 'root', '21311968') or print("ERRO");
+            $conecta = mysqli_connect('localhost', 'root', '123456') or print("ERRO");
             mysqli_select_db($conecta, 'ilgner') or print("ERRO");
             $sql = "SELECT * FROM cadastro";
             $result = mysqli_query($conecta, $sql);
@@ -113,7 +123,7 @@ Email
                 echo "<td> $consulta[setor]</td> ";
                 echo "<td> $consulta[email]</td> ";
                 echo "<td class='center'><a href='apaga.php?id=$consulta[id]' class='apaga center'><i class='fa-solid fa-trash '></i></a>
-                <a href='altera.php?id=$consulta[id]'><i class='fa-solid fa-pencil'></i></a></td>";
+                <a href='altera.php?id=$consulta[id]' class='alter'><i class='fa-solid fa-pencil'></i></a></td>";
                 echo "</tr>";
             }
             mysqli_free_result($result);
@@ -132,6 +142,24 @@ Email
         <div class="btn">
             <a href="index.php">Voltar</a>
         </div>
+
+        <script>
+
+            btn = document.querySelectorAll(".apaga");
+            console.log(btn);
+            btn.forEach((el)=>{
+
+
+            el.addEventListener("click",()=>{
+                confirm("Deseja apagar?");
+
+            });
+
+            });
+
+
+
+        </script>
     </body>
 
 </html>

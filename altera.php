@@ -99,11 +99,15 @@
 
     fieldset {
         width: 50vw;
-        height: 40vh;
+        height: 30vh;
         border-radius: 8px;
         background: white;
         -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.22);
         box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.22);
+    }
+
+    .hiden{
+        display: none;
     }
     </style>
 
@@ -111,7 +115,7 @@
         $id = $_GET["id"];
 
 
-        $conecta = mysqli_connect('localhost', 'root', '21311968') or print("ERRO");
+        $conecta = mysqli_connect('localhost', 'root', '123456') or print("ERRO");
         mysqli_select_db($conecta, 'ilgner') or print("ERRO");
         $sql = "SELECT * FROM cadastro where id = $id";
         $result = mysqli_query($conecta, $sql);
@@ -126,7 +130,8 @@
 
             echo  "<fieldset>";
             echo  "<legend>Cadastro</legend>";
-            echo  "<form action='insere.php' method='post'>";
+            echo  "<form action='alterar_banco.php' method='post'>";
+            echo  "<label for=''class='hiden'>ID:</label><input type='text' name='id' value='$consulta[id]' class='hiden'>";
             echo  "<label for=''>Nome:</label><input type='text' name='nome' value=' $consulta[nome]'>";
             echo "<label for=''>Telefone:</label><input type='text' name='telefone' value='$consulta[telefone]'>";
             echo  "<label for=''>Setor:</label><input type='text' name='setor' value='$consulta[setor]'>";
@@ -153,6 +158,8 @@
         <div class="btn">
             <a href="banco.php">Voltar</a>
         </div>
+
+        <script></script>
     </body>
 
 </html>

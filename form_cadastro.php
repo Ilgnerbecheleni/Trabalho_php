@@ -87,6 +87,12 @@
     </head>
 
     <body>
+
+
+    <?php
+
+
+        ?>
         <fieldset>
             <legend>Cadastro</legend>
             <form action="insere.php" method="post">

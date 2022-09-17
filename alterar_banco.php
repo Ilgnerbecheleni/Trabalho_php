@@ -35,6 +35,7 @@
     </style>
 
     <body> <?php
+        $id = $_POST["id"];
         $nome = $_POST["nome"];
         $telefone = $_POST["telefone"];
         $setor = $_POST["setor"];
@@ -47,14 +48,14 @@
         mysqli_select_db($conecta, 'ilgner') or print("ERRO");
 
 
-        $sql = "INSERT INTO cadastro (nome , telefone , setor , email) VALUES ('$nome' , '$telefone' , '$setor' , '$email')";
+        $sql = "UPDATE `ilgner`.`cadastro` SET `nome` = '$nome', `telefone` = '$telefone', `setor` = '$setor', `email` = '$email' WHERE (`id` = '$id'); ";
         if (mysqli_query($conecta, $sql)) {
             echo "<h1>SALVO COM SUCESSO ";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conecta);
         }
         mysqli_close($conecta);
-        echo "<a class='btn' href=" . "index.php" . ">" . "Voltar</a>";
+        echo "<a class='btn' href=" . "banco.php" . ">" . "Voltar</a>";
 
         ?> </body>
 
